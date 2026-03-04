@@ -1,17 +1,98 @@
-# ERP-dignnitas
+# ERP Fundación Dignitas
 
-## Objetivo general
-Construir un ERP modular para gestionar operaciones básicas de una organización (ventas, inventario y compras) con trazabilidad y reportes simples.
+Este repositorio define la visión inicial de un ERP modular y escalable para **Fundación Dignitas**.
 
-## Objetivos iniciales (MVP)
-1. **Autenticación básica** de usuarios con roles (admin y operador).
-2. **Gestión de productos** (crear, listar, editar, desactivar).
-3. **Gestión de inventario** (entradas, salidas y stock actual).
-4. **Registro de ventas** con detalle de ítems y total.
-5. **Reporte simple** de ventas por rango de fechas.
+## Objetivo del sistema
 
-## Criterios de validación del MVP
-- Todas las operaciones CRUD principales responden correctamente.
-- El stock se actualiza de forma consistente en cada movimiento.
-- El reporte de ventas coincide con los datos registrados.
-- El flujo mínimo (login → alta producto → movimiento stock → venta → reporte) es ejecutable.
+Construir una aplicación robusta que permita:
+
+- Administrar inventario (entradas, salidas, stock mínimo, trazabilidad).
+- Generar certificados con plantillas configurables y firma digital.
+- Agregar nuevas funcionalidades por módulos sin afectar lo ya construido.
+- Fortalecer continuamente los procesos actuales con métricas y auditoría.
+
+## Propuesta funcional (MVP)
+
+### 1) Inventario
+
+- Catálogo de productos/insumos con categorías.
+- Gestión de bodegas y ubicaciones.
+- Movimientos de inventario (ingreso, ajuste, transferencia, salida).
+- Alertas de stock mínimo.
+- Kardex por producto.
+
+### 2) Certificados
+
+- Plantillas de certificados por tipo (beneficiario, donación, participación, etc.).
+- Variables dinámicas (nombre, cédula, fecha, código único).
+- Generación en PDF.
+- Historial y reimpresión.
+- Validación por código/QR.
+
+### 3) Seguridad y control
+
+- Usuarios, roles y permisos granulares.
+- Bitácora de acciones (auditoría).
+- Gestión de sesiones y políticas de contraseña.
+
+### 4) Reportes
+
+- Reportes de inventario por fecha, categoría y bodega.
+- Reportes de certificados emitidos.
+- Exportación a Excel/PDF.
+
+## Arquitectura recomendada
+
+Para crecer en el tiempo sin rehacer el sistema:
+
+- **Backend API**: arquitectura modular (monolito modular inicialmente).
+- **Base de datos relacional**: PostgreSQL.
+- **Frontend web**: panel administrativo responsivo.
+- **Autenticación**: JWT + refresh tokens.
+- **Archivos**: almacenamiento de PDFs y plantillas.
+- **Observabilidad**: logs estructurados y monitoreo básico.
+
+## Módulos evolutivos (fase 2+)
+
+- Compras y proveedores.
+- Donaciones y trazabilidad por proyecto.
+- CRM social (beneficiarios, atenciones, seguimiento).
+- Gestión documental.
+- Integraciones contables/facturación.
+- Tablero de indicadores (KPIs).
+
+## Modelo de implementación sugerido
+
+1. **Descubrimiento (1–2 semanas)**
+   - Levantamiento de procesos actuales.
+   - Priorización de requerimientos.
+   - Diseño del MVP.
+
+2. **Construcción MVP (6–10 semanas)**
+   - Inventario + certificados + seguridad + reportes base.
+   - Pruebas funcionales con usuarios clave.
+
+3. **Estabilización (2 semanas)**
+   - Ajustes de rendimiento.
+   - Fortalecimiento de reglas de negocio.
+   - Capacitación inicial.
+
+4. **Evolución continua**
+   - Incorporación de nuevos módulos por iteraciones.
+   - Roadmap trimestral.
+
+## Requisitos no funcionales clave
+
+- Escalabilidad modular.
+- Seguridad de datos personales.
+- Trazabilidad completa de operaciones.
+- Disponibilidad y respaldos automáticos.
+- Mantenibilidad (documentación + pruebas).
+
+## Próximos pasos recomendados
+
+- Definir stack tecnológico final (por ejemplo: NestJS + PostgreSQL + React).
+- Elaborar historias de usuario por módulo.
+- Diseñar esquema de base de datos inicial.
+- Crear prototipo de UI y flujo de certificados.
+- Configurar repositorio con CI/CD y estándares de calidad.
